@@ -73,7 +73,7 @@ Class {
 		'fileName',
 		'collectionDictionary'
 	],
-	#category : #GameCollector
+	#category : #'GameCollector-Core'
 }
 
 { #category : #import }

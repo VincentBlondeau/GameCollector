@@ -1,7 +1,7 @@
 Class {
 	#name : #GameItemTest,
 	#superclass : #TestCase,
-	#category : #GameCollector
+	#category : #'GameCollector-Tests'
 }
 
 { #category : #tests }

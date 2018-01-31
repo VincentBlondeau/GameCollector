@@ -52,6 +52,14 @@ GameItemPresenter class >> inputCharWidth [
 	^ 16
 ]
 
+{ #category : #scripting }
+GameItemPresenter class >> openOnFFX [
+	<script>
+	GameItemPresenter new
+		gameItem: GameItem finalFantasyX;
+		openWithSpec
+]
+
 { #category : #'widget accessing' }
 GameItemPresenter >> commentsTextModel [
 
