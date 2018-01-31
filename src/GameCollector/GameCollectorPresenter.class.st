@@ -31,6 +31,14 @@ GameCollectorPresenter class >> defaultSpec [
 ]
 
 { #category : #scripting }
+GameCollectorPresenter class >> openInWorldOnSmallCollection2 [
+	<script>
+	GameCollectorPresenter new
+		on: GameCollector smallCollection2;
+		openWorldWithSpec
+]
+
+{ #category : #scripting }
 GameCollectorPresenter class >> openOnSmallCollection2 [
 	<script>
 	GameCollectorPresenter new

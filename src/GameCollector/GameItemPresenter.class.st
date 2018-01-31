@@ -19,7 +19,8 @@ Class {
 		'commentsTextModel',
 		'titleNameTextModel',
 		'criticsTextModel',
-		'quotationTextModel'
+		'quotationTextModel',
+		'imagePresenter'
 	],
 	#category : #'GameCollector-UI'
 }
@@ -43,7 +44,8 @@ GameItemPresenter class >> defaultSpec [
 					row add: #hasBoxCheckBoxModel ]
 				height: self inputTextHeight.
 			col add: #commentsTextModel height: self inputTextHeight * 4.
-			col newRow: [ :e |  ] ];
+			col newRow: [ :row | row add: #imagePresenter ] height: 300.
+			col newRow: [ :row |  ] ];
 		yourself
 ]
 
@@ -83,10 +85,9 @@ GameItemPresenter >> criticsTextModel [
 	^ criticsTextModel 
 ]
 
-{ #category : #spec }
-GameItemPresenter >> extent [ 
-
-	^ 280 @250
+{ #category : #api }
+GameItemPresenter >> extent [
+	^ 280 @ 450
 ]
 
 { #category : #'widget accessing' }
@@ -107,10 +108,11 @@ GameItemPresenter >> gameItemChanged [
 	consoleDropListModel setSelectedItem: gameItem value console.
 	conditionDropListModel setSelectedItem: gameItem value condition.
 	hasDocCheckBoxModel state: gameItem value hasDocumentation.
-	finishedCheckBoxModel state: gameItem value finished .
+	finishedCheckBoxModel state: gameItem value finished.
 	quotationTextModel text: gameItem value quotation.
 	commentsTextModel text: gameItem value comments.
 	criticsTextModel text: gameItem value critics.
+	imagePresenter image: gameItem value fetchCoverForm
 ]
 
 { #category : #'widget accessing' }
@@ -124,6 +126,11 @@ GameItemPresenter >> hasDocCheckBoxModel [
 	^ hasDocCheckBoxModel
 	
 	
+]
+
+{ #category : #accessing }
+GameItemPresenter >> imagePresenter [
+	^ imagePresenter
 ]
 
 { #category : #initialization }
@@ -158,6 +165,7 @@ GameItemPresenter >> initializeWidgets [
 	criticsTextModel ghostText: ' x / 20 '.
 	commentsTextModel := self newTextInput.
 	criticsTextModel ghostText: ' May be you want to add something... '.
+	imagePresenter := self newImage
 ]
 
 { #category : #'domain object' }

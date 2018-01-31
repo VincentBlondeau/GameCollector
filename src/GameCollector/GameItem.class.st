@@ -280,6 +280,14 @@ GameItem >> fetchCover [
 		do: [ coverUrlPart := self urlPartIsNetworkError ]
 ]
 
+{ #category : #'as yet unclassified' }
+GameItem >> fetchCoverForm [
+	cover := self fetchCover.
+	(cover isKindOf: GameItem)
+		ifTrue: [ ^ Smalltalk ui icons iconNamed: #error ].
+	^ cover
+]
+
 { #category : #accessing }
 GameItem >> finished [
 	^ finished
