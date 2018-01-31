@@ -243,9 +243,10 @@ GameItem >> console [
 	^ console
 ]
 
-{ #category : #accessing }
+{ #category : #'cover fetching logic' }
 GameItem >> coverUrl [
-	^ 'http://www.thecoverproject.net/images/covers/' , self console asLowercase , '_' , self coverUrlPart , '_thumb.jpg'
+	^ 'https://web.archive.org/web/20170722131132if_/http://www.thecoverproject.net/images/covers/'
+		, self console asLowercase , '_' , self coverUrlPart , '_thumb.jpg'
 ]
 
 { #category : #accessing }
