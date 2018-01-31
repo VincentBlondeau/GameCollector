@@ -202,7 +202,7 @@ GameCollector >> remove: aGameItem from: aSymbol [
 GameCollector >> save [
 	| stream fs |
 	fs := FileSystem workingDirectory.
-	stream := (fs / (fs nextNameFor: self fileName extension: 'ston')) asFileReference writeStream.
+	stream := (fs / self fileName, 'ston') nextVersion writeStream.
 	self asSTON: stream
 ]
 
