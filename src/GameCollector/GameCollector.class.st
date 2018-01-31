@@ -137,9 +137,9 @@ GameCollector class >> smallCollection2 [
 	^ collector
 ]
 
-{ #category : #'adding/removing' }
+{ #category : #adding }
 GameCollector >> add: aGameItem to: aCollectionSymbol [
-	(collectionDictionary at: aCollectionSymbol) add: aGameItem .
+	(collectionDictionary at: aCollectionSymbol) add: aGameItem
 ]
 
 { #category : #conversion }
@@ -147,21 +147,19 @@ GameCollector >> asSTON [
 	^ String streamContents: [ :s | self asSTON: s ]
 ]
 
-{ #category : #conversion }
+{ #category : #converting }
 GameCollector >> asSTON: aStream [
-	^  STON put: self onStreamPretty: aStream
+	^ STON put: self onStreamPretty: aStream
 ]
 
 { #category : #'collection management' }
-GameCollector >> collectionNamed: aCollectionSymbol [ 
-	^ collectionDictionary at: aCollectionSymbol .
+GameCollector >> collectionNamed: aCollectionSymbol [
+	^ collectionDictionary at: aCollectionSymbol
 ]
 
 { #category : #'collection management' }
 GameCollector >> declareNewCollection: aSymbol [
-	(collectionDictionary includesKey: aSymbol)
-	ifFalse: 
-	[ collectionDictionary at: aSymbol put: OrderedCollection new ]
+	collectionDictionary at: aSymbol ifAbsentPut: [ OrderedCollection new ]
 ]
 
 { #category : #'collection management' }
@@ -190,12 +188,11 @@ GameCollector >> initialize [
 	collectionDictionary := Dictionary new
 ]
 
-{ #category : #'adding/removing' }
+{ #category : #removing }
 GameCollector >> remove: aGameItem from: aSymbol [
 	(self declaredCollectionNames includes: aSymbol)
-	ifFalse: [^self].
-	(self collectionNamed: aSymbol) remove: aGameItem 
-	ifAbsent: [  ]
+		ifFalse: [ ^ self ].
+	(self collectionNamed: aSymbol) remove: aGameItem ifAbsent: [  ]
 ]
 
 { #category : #'file saving' }
@@ -208,10 +205,7 @@ GameCollector >> save [
 
 { #category : #selection }
 GameCollector >> select: aBlock [
-	| result |
-	result := OrderedCollection new.
-	self declaredCollectionNames do: [ :aCollectionName | result addAll: ((self collectionNamed: aCollectionName) select: aBlock) ].
-	^ result
+	^ self declaredCollectionNames flatCollect: [ :aCollectionName | (self collectionNamed: aCollectionName) select: aBlock ]
 ]
 
 { #category : #accessing }

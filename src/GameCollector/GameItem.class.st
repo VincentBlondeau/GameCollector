@@ -225,7 +225,7 @@ GameItem >> bought: anInteger [
 
 { #category : #accessing }
 GameItem >> comments [
-	^ comments .
+	^ comments
 ]
 
 { #category : #accessing }
@@ -260,7 +260,7 @@ GameItem >> coverUrlPart: aString [
 
 { #category : #accessing }
 GameItem >> critics [
-	^critics
+	^ critics
 ]
 
 { #category : #accessing }
@@ -270,7 +270,6 @@ GameItem >> critics: anInteger [
 
 { #category : #'cover fetching logic' }
 GameItem >> fetchCover [
-	
 	(coverUrlPart isNil or: [ coverUrlPart = self urlPartIsNetworkError ])
 		ifTrue: [ coverUrlPart := self guessUrlPart ].
 	[ [ ^ ZnEasy getJpeg: self coverUrl ]
@@ -292,7 +291,7 @@ GameItem >> finished: aBoolean [
 
 { #category : #constant }
 GameItem >> gameCube [
-	console := GameCube
+	console := self class GameCube
 ]
 
 { #category : #constant }
@@ -384,7 +383,7 @@ GameItem >> setCover [
 
 { #category : #constant }
 GameItem >> threeDS [
-	console := TDS
+	console := self class TDS
 ]
 
 { #category : #accessing }

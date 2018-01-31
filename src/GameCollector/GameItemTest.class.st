@@ -95,7 +95,7 @@ GameItemTest >> testInitialize [
 	self assert: item hasDocumentation equals: true.
 	self assert: item hasBox equals: true.
 	self assert: item isFinished equals: false.
-	self assert: item condition = GameItem goodCondition.
+	self assert: item condition equals: GameItem goodCondition.
 	self assert: item quotation equals: 0.
 	self assert: item critics equals: 0.
 	self assert: item comments equals: ''
@@ -163,9 +163,10 @@ GameItemTest >> testUrl [
 
 { #category : #'tests - url for fetching cover' }
 GameItemTest >> testWrongGuessedUrlPart [
-
 	| g |
-	g := GameItem new title: 'Jak II'; PS2.
+	g := GameItem new
+		title: 'Jak II';
+		PS2.
 	g fetchCover.
-	self assert: g coverUrlPart equals: g wrongUrlPart 
+	self assert: g coverUrlPart equals: g wrongUrlPart
 ]

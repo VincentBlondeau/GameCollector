@@ -145,13 +145,11 @@ GameCollectorTest >> testFindInText [
 		comments: 'Finalement !'.
 	collector add: item2 to: #owned.
 	self
-		assert: (collector findInText: '*Final*')
-		equals:
+		assertCollection: (collector findInText: '*Final*')
+		hasSameElements:
 			{item1.
-			item2} asOrderedCollection.
-	self
-		assert: (collector findInText: '*cool*')
-		equals: {item1} asOrderedCollection
+			item2}.
+	self assertCollection: (collector findInText: '*cool*') hasSameElements: {item1}
 ]
 
 { #category : #tests }
@@ -242,10 +240,10 @@ GameCollectorTest >> testSelectMultipleResults [
 		critics: 15.
 	collector add: item2 to: #owned.
 	self
-		assert: (collector select: [ :each | '*Final*' match: each title ])
-		equals:
+		assertCollection: (collector select: [ :each | '*Final*' match: each title ])
+		hasSameElements:
 			{item1.
-			item2} asOrderedCollection
+			item2}
 ]
 
 { #category : #tests }
@@ -264,9 +262,7 @@ GameCollectorTest >> testSelectNoResults [
 		quotation: 10;
 		critics: 15.
 	collector add: item2 to: #owned.
-	self
-		assert: (collector select: [ :each | each quotation = 8 ])
-		equals: {} asOrderedCollection
+	self assertCollection: (collector select: [ :each | each quotation = 8 ]) hasSameElements: #()
 ]
 
 { #category : #tests }
@@ -287,6 +283,6 @@ GameCollectorTest >> testSelectOneCollection [
 	collector add: item2 to: #owned.
 	self assert: (collector collectionNamed: #owned) size equals: 2.
 	self
-		assert: (collector select: [ :each | each hasDocumentation ])
-		equals: {item2} asOrderedCollection
+		assertCollection: (collector select: [ :each | each hasDocumentation ])
+		hasSameElements: {item2} 
 ]
