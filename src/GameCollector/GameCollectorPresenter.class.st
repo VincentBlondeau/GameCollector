@@ -30,6 +30,14 @@ GameCollectorPresenter class >> defaultSpec [
 				yourself ]; yourself
 ]
 
+{ #category : #scripting }
+GameCollectorPresenter class >> openOnSmallCollection2 [
+	<script>
+	GameCollectorPresenter new
+		on: GameCollector smallCollection2;
+		openWithSpec
+]
+
 { #category : #'spec hooks' }
 GameCollectorPresenter >> extent [ 
 

@@ -25,6 +25,14 @@ GameListPresenter class >> defaultSpec [
 		yourself
 ]
 
+{ #category : #scripting }
+GameListPresenter class >> openOnSmallCollection [
+	<script>
+	GameListPresenter new
+		on: GameCollector smallCollection;
+		openWithSpec
+]
+
 { #category : #specs }
 GameListPresenter class >> title [
 	^ 'Collector'
