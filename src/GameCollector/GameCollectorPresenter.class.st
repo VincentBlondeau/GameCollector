@@ -31,6 +31,18 @@ GameCollectorPresenter class >> defaultSpec [
 ]
 
 { #category : #scripting }
+GameCollectorPresenter class >> openAppSettingsOn: aBuilder [
+	<deploymentsettings>
+	(aBuilder deployment: #gameCollectorApp)
+		label: 'Game Collector App';
+		description: 'My super cool app to deploy!';
+		actionTarget: self;
+		actionTargetSelector: #openInWorldOnSmallCollection2;
+		order: 100;
+		orderGroup: #finalizing
+]
+
+{ #category : #scripting }
 GameCollectorPresenter class >> openInWorldOnSmallCollection2 [
 	<script>
 	GameCollectorPresenter new
