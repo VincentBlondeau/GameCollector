@@ -39,7 +39,7 @@ GameCollectorPresenter class >> openAppSettingsOn: aBuilder [
 		actionTarget: self;
 		actionTargetSelector: #openInWorldOnSmallCollection2;
 		order: 100;
-		orderGroup: #finalizing
+		parent: #finalizing 
 ]
 
 { #category : #scripting }
