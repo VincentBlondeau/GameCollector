@@ -36,10 +36,10 @@ GameCollectorPresenter class >> openAppSettingsOn: aBuilder [
 	(aBuilder deployment: #gameCollectorApp)
 		label: 'Game Collector App';
 		description: 'My super cool app to deploy!';
-		actionTarget: self;
+		actionTarget: [ GameCollectorPresenter ];
 		actionTargetSelector: #openInWorldOnSmallCollection2;
 		order: 100;
-		parent: #finalizing 
+		parent: #finalizing
 ]
 
 { #category : #scripting }
